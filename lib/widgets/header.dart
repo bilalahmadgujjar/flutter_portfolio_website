@@ -13,11 +13,7 @@ class HeaderBox extends StatelessWidget {
   final List<HeaderOption> options;
   final Function(GlobalKey) onNavTap;
 
-  const HeaderBox({
-    Key? key,
-    required this.options,
-    required this.onNavTap,
-  }) : super(key: key);
+  const HeaderBox({super.key, required this.options, required this.onNavTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,10 @@ class HeaderBox extends StatelessWidget {
 
     return Container(
       color: backgroundDarkSecondary,
-      padding:  isDesktop?EdgeInsets.symmetric(horizontal: 180, vertical: 16): EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding(context),
+        vertical: 16,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -37,7 +36,7 @@ class HeaderBox extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: 22,
               letterSpacing: 2,
-            )
+            ),
           ),
           if (isDesktop)
             Row(
@@ -50,10 +49,10 @@ class HeaderBox extends StatelessWidget {
                     child: Text(
                       option.title,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                             color: textDisabled,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15.5,
-                          ),
+                        color: textDisabled,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15.5,
+                      ),
                     ),
                   ),
                 );
@@ -69,5 +68,19 @@ class HeaderBox extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  double horizontalPadding(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    if (width > 1400) {
+      return 180; // Large screens
+    } else if (width > 1100) {
+      return 100; // Laptops
+    } else if (width > 800) {
+      return 60; // Tablets / small screens
+    } else {
+      return 24; // Mobile
+    }
   }
 }
