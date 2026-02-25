@@ -39,6 +39,7 @@ class _HomeSectionState extends State<HomeSection> {
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
+    final isMobile = Responsive.isMobile(context);
     final theme = Theme.of(context).textTheme;
 
     return Container(
@@ -59,11 +60,17 @@ class _HomeSectionState extends State<HomeSection> {
                 children: [
                   Expanded(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: isMobile?MainAxisAlignment.center:MainAxisAlignment.start,
                       crossAxisAlignment: isDesktop
                           ? CrossAxisAlignment.start
                           : CrossAxisAlignment.center,
                       children: [
+                       isMobile?CircleAvatar(
+                         radius: 75, // half of width/height
+                         backgroundColor: Colors.transparent, // optional
+                         backgroundImage: AssetImage('assets/image/profile.png'),
+                       ):SizedBox(),
+                       isMobile?SizedBox(height: 22,):SizedBox(),
                         ElevatedButton(
                           onPressed: () {},
                           child: const Text('Software Engineer'),
@@ -74,14 +81,20 @@ class _HomeSectionState extends State<HomeSection> {
                           letterSpace: 5,
                           fontWeight: FontWeight.w100,
                           textColor: textWhite,
-                          fontSize: 55,
-                          textAlign: isDesktop ? TextAlign.left : TextAlign.center,
+                          fontSize: isDesktop ? 55 : 40,
+                          textAlign: isDesktop
+                              ? TextAlign.left
+                              : TextAlign.center,
                         ),
                         const SizedBox(height: 5),
                         Text(
                           "Bilal Ahmad",
-                          style: isDesktop ? theme.displayLarge : theme.displayMedium,
-                          textAlign: isDesktop ? TextAlign.left : TextAlign.center,
+                          style: isDesktop
+                              ? theme.displayLarge!.copyWith(fontSize: 50)
+                              : theme.displayMedium!.copyWith(fontSize: 30),
+                          textAlign: isDesktop
+                              ? TextAlign.left
+                              : TextAlign.center,
                         ),
                         const SizedBox(height: 22),
 
@@ -99,7 +112,9 @@ class _HomeSectionState extends State<HomeSection> {
                                 fontWeight: FontWeight.w200,
                                 textColor: textWhite,
                                 fontSize: 14,
-                                textAlign: isDesktop ? TextAlign.left : TextAlign.center,
+                                textAlign: isDesktop
+                                    ? TextAlign.left
+                                    : TextAlign.center,
                               ),
                             ),
                           ],
@@ -114,7 +129,11 @@ class _HomeSectionState extends State<HomeSection> {
                               : MainAxisAlignment.center,
                           children: [
                             isDesktop
-                                ? Container(width: 80, height: 0.5, color: textWhite)
+                                ? Container(
+                                    width: 80,
+                                    height: 0.5,
+                                    color: textWhite,
+                                  )
                                 : SizedBox.shrink(),
                             isDesktop ? SizedBox(width: 20) : SizedBox.shrink(),
                             Row(
@@ -122,7 +141,11 @@ class _HomeSectionState extends State<HomeSection> {
                                   ? MainAxisAlignment.start
                                   : MainAxisAlignment.center,
                               children: [
-                                iconContainer(context, Icons.facebook, isDesktop),
+                                iconContainer(
+                                  context,
+                                  Icons.facebook,
+                                  isDesktop,
+                                ),
                                 SizedBox(width: 4),
                                 iconContainer(context, Icons.email, isDesktop),
                                 SizedBox(width: 4),
@@ -147,11 +170,15 @@ class _HomeSectionState extends State<HomeSection> {
                               ? MainAxisAlignment.start
                               : MainAxisAlignment.center,
                           children: [
-                            expRow(context, '~2', 'Years\nExperience'),
+                            expRow(context, '~2', 'Years\nExperience',isDesktop),
                             SizedBox(width: 15),
-                            expRow(context, '20+', 'Projects Completed\nin Pakistan'),
+                            expRow(
+                              context,
+                              '20+',
+                              'Projects Completed\nin Pakistan',isDesktop
+                            ),
                             SizedBox(width: 15),
-                            expRow(context, '~130k', 'Content\nReach & Views'),
+                            expRow(context, '~130k', 'Content\nReach & Views',isDesktop),
                           ],
                         ),
                       ],
@@ -174,8 +201,6 @@ class _HomeSectionState extends State<HomeSection> {
                 width: MediaQuery.of(context).size.width * 0.35,
               ),
             ),
-
-          
         ],
       ),
     );
@@ -185,19 +210,19 @@ class _HomeSectionState extends State<HomeSection> {
   ///=========== Reusable Widgets ========
   ///====================================
 
-  Row expRow(BuildContext context, String title, String body) {
+  Row expRow(BuildContext context, String title, String body,bool isDesktop) {
     return Row(
       children: [
         text(
           text: title,
-          fontSize: 24,
+          fontSize: isDesktop? 24:16,
           fontWeight: FontWeight.w400,
           textColor: textWhite,
         ),
         SizedBox(width: 5),
         text(
           text: body,
-          fontSize: 10,
+          fontSize: isDesktop? 10:6,
           fontWeight: FontWeight.w400,
           textColor: textDisabled,
         ),
