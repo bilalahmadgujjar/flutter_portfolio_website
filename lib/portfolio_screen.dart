@@ -58,34 +58,36 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: MobileDrawer(
-        options: navOptions,
-        onNavTap: scrollToSection,
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            HeaderBox(
-              options: navOptions,
-              onNavTap: scrollToSection,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                controller: _scrollController,
-                child: Column(
-                  children: [
-                    Container(key: homeKey, child: const HomeSection()),
-                    Container(key: aboutKey, child: const AboutSection()),
-                    Container(key: skillsKey, child: const SkillsSection()),
-                    Container(key: experienceKey, child: const ExperienceSection()),
-                    Container(key: projectsKey, child: const ProjectsSection()),
-                    Container(key: contactKey, child: const ContactSection()),
-                  ],
+    return SelectionArea(
+      child: Scaffold(
+        endDrawer: MobileDrawer(
+          options: navOptions,
+          onNavTap: scrollToSection,
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              HeaderBox(
+                options: navOptions,
+                onNavTap: scrollToSection,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      Container(key: homeKey, child: const HomeSection()),
+                      Container(key: aboutKey, child: const AboutSection()),
+                      Container(key: skillsKey, child: const SkillsSection()),
+                      Container(key: experienceKey, child: const ExperienceSection()),
+                      Container(key: projectsKey, child: const ProjectsSection()),
+                      Container(key: contactKey, child: const ContactSection()),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
