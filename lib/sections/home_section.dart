@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_app/core/theme.dart';
 import 'package:portfolio_app/widgets/text_widget.dart';
 import '../core/responsive.dart';
@@ -143,15 +144,13 @@ class _HomeSectionState extends State<HomeSection> {
                               ? MainAxisAlignment.start
                               : MainAxisAlignment.center,
                           children: [
-                            iconContainer(
-                              context,
-                              Icons.facebook,
-                              isDesktop,
-                            ),
-                            SizedBox(width: 4),
-                            iconContainer(context, Icons.email, isDesktop),
-                            SizedBox(width: 4),
-                            iconContainer(context, Icons.code, isDesktop),
+                            iconContainer(context, FontAwesomeIcons.instagram, isDesktop),
+                            SizedBox(width: 12),
+                            iconContainer(context, FontAwesomeIcons.solidEnvelope, isDesktop),
+                            SizedBox(width: 12),
+                            iconContainer(context, FontAwesomeIcons.github, isDesktop),
+                            SizedBox(width: 12),
+                            iconContainer(context, FontAwesomeIcons.linkedin, isDesktop),
                           ],
                         ),
                       ],
@@ -253,7 +252,7 @@ class _HomeSectionState extends State<HomeSection> {
         shape: BoxShape.circle,
       ),
       child: Center(
-        child: Icon(icon, color: accentMint, size: isDesktop ? 20 : 20),
+        child: FaIcon(icon, color: accentMint, size: isDesktop ? 18 : 16),
       ),
     );
   }

@@ -60,7 +60,7 @@ class HeaderBox extends StatelessWidget {
             )
           else
             IconButton(
-              icon: const Icon(Icons.menu, size: 32),
+              icon:  Icon(Icons.menu,color: accentMint, size: 24),
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
               },
