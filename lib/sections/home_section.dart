@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/core/theme.dart';
 import 'package:portfolio_app/widgets/text_widget.dart';
@@ -40,168 +42,181 @@ class _HomeSectionState extends State<HomeSection> {
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
     final isMobile = Responsive.isMobile(context);
+    final isTablet = Responsive.isTablet(context);
     final theme = Theme.of(context).textTheme;
 
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
         minHeight:
-            MediaQuery.of(context).size.height -
+        MediaQuery.of(context).size.height -
             80, // rough height minus header
       ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
-      child: Stack(
-        children: [
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1000),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: isMobile?MainAxisAlignment.center:MainAxisAlignment.start,
-                      crossAxisAlignment: isDesktop
-                          ? CrossAxisAlignment.start
-                          : CrossAxisAlignment.center,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: isDesktop?MainAxisAlignment.center:MainAxisAlignment.start,
+                  crossAxisAlignment: isDesktop
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center,
+                  children: [
+                    isMobile || isTablet?CircleAvatar(
+                      radius: 75, // half of width/height
+                      backgroundColor: backgroundDarkPrimary.withValues(alpha: 0.6),
+                      backgroundImage: AssetImage('assets/image/profile.png'),
+                    ):SizedBox(),
+                    isMobile || isTablet?SizedBox(height: 22,):SizedBox(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Software Engineer'),
+                    ),
+                    SizedBox(height: 16),
+                    text(
+                      text: 'Muhammad',
+                      letterSpace: 5,
+                      fontWeight: FontWeight.w100,
+                      textColor: textWhite,
+                      fontSize: isDesktop ? 55 : 40,
+                      textAlign: isDesktop
+                          ? TextAlign.left
+                          : TextAlign.center,
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      "Bilal Ahmad",
+                      style: isDesktop
+                          ? theme.displayLarge!.copyWith(fontSize: 50)
+                          : theme.displayMedium!.copyWith(fontSize: 30),
+                      textAlign: isDesktop
+                          ? TextAlign.left
+                          : TextAlign.center,
+                    ),
+                    const SizedBox(height: 22),
+
+                    Row(
+                      mainAxisAlignment: isDesktop
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
                       children: [
-                       isMobile?CircleAvatar(
-                         radius: 75, // half of width/height
-                         backgroundColor: Colors.transparent, // optional
-                         backgroundImage: AssetImage('assets/image/profile.png'),
-                       ):SizedBox(),
-                       isMobile?SizedBox(height: 22,):SizedBox(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Software Engineer'),
+                        Icon(Icons.play_arrow, color: accentMint),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 400),
+                          child: text(
+                            nameKey: ValueKey(index),
+                            text: titles[index],
+                            fontWeight: FontWeight.w200,
+                            textColor: textWhite,
+                            fontSize: 14,
+                            textAlign: isDesktop
+                                ? TextAlign.left
+                                : TextAlign.center,
+                          ),
                         ),
-                        SizedBox(height: 16),
-                        text(
-                          text: 'Muhammad',
-                          letterSpace: 5,
-                          fontWeight: FontWeight.w100,
-                          textColor: textWhite,
-                          fontSize: isDesktop ? 55 : 40,
-                          textAlign: isDesktop
-                              ? TextAlign.left
-                              : TextAlign.center,
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          "Bilal Ahmad",
-                          style: isDesktop
-                              ? theme.displayLarge!.copyWith(fontSize: 50)
-                              : theme.displayMedium!.copyWith(fontSize: 30),
-                          textAlign: isDesktop
-                              ? TextAlign.left
-                              : TextAlign.center,
-                        ),
-                        const SizedBox(height: 22),
+                      ],
+                    ),
 
+                    const SizedBox(height: 30),
+
+                    /// Social Icons
+                    Row(
+                      mainAxisAlignment: isDesktop
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
+                      children: [
+                        isDesktop
+                            ? Container(
+                          width: 80,
+                          height: 0.5,
+                          color: textWhite,
+                        )
+                            : SizedBox.shrink(),
+                        isDesktop ? SizedBox(width: 20) : SizedBox.shrink(),
                         Row(
                           mainAxisAlignment: isDesktop
                               ? MainAxisAlignment.start
                               : MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.play_arrow, color: accentMint),
-                            AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 400),
-                              child: text(
-                                nameKey: ValueKey(index),
-                                text: titles[index],
-                                fontWeight: FontWeight.w200,
-                                textColor: textWhite,
-                                fontSize: 14,
-                                textAlign: isDesktop
-                                    ? TextAlign.left
-                                    : TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 30),
-
-                        /// Social Icons
-                        Row(
-                          mainAxisAlignment: isDesktop
-                              ? MainAxisAlignment.start
-                              : MainAxisAlignment.center,
-                          children: [
-                            isDesktop
-                                ? Container(
-                                    width: 80,
-                                    height: 0.5,
-                                    color: textWhite,
-                                  )
-                                : SizedBox.shrink(),
-                            isDesktop ? SizedBox(width: 20) : SizedBox.shrink(),
-                            Row(
-                              mainAxisAlignment: isDesktop
-                                  ? MainAxisAlignment.start
-                                  : MainAxisAlignment.center,
-                              children: [
-                                iconContainer(
-                                  context,
-                                  Icons.facebook,
-                                  isDesktop,
-                                ),
-                                SizedBox(width: 4),
-                                iconContainer(context, Icons.email, isDesktop),
-                                SizedBox(width: 4),
-                                iconContainer(context, Icons.code, isDesktop),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 30),
-                        text(
-                          text: "LET'S CHAT!",
-                          letterSpace: 2,
-                          fontWeight: FontWeight.w500,
-                          textColor: accentMint,
-                          fontSize: 14,
-                        ),
-                        const SizedBox(height: 5),
-                        Container(width: 110, height: 1.5, color: accentMint),
-                        const SizedBox(height: 35),
-                        Row(
-                          mainAxisAlignment: isDesktop
-                              ? MainAxisAlignment.start
-                              : MainAxisAlignment.center,
-                          children: [
-                            expRow(context, '~2', 'Years\nExperience',isDesktop),
-                            SizedBox(width: 15),
-                            expRow(
+                            iconContainer(
                               context,
-                              '20+',
-                              'Projects Completed\nin Pakistan',isDesktop
+                              Icons.facebook,
+                              isDesktop,
                             ),
-                            SizedBox(width: 15),
-                            expRow(context, '~130k', 'Content\nReach & Views',isDesktop),
+                            SizedBox(width: 4),
+                            iconContainer(context, Icons.email, isDesktop),
+                            SizedBox(width: 4),
+                            iconContainer(context, Icons.code, isDesktop),
                           ],
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 30),
+                    text(
+                      text: "LET'S CHAT!",
+                      letterSpace: 2,
+                      fontWeight: FontWeight.w500,
+                      textColor: accentMint,
+                      fontSize: 14,
+                    ),
+                    const SizedBox(height: 5),
+                    Container(width: 110, height: 1.5, color: accentMint),
+                    const SizedBox(height: 35),
+                    Row(
+                      mainAxisAlignment: isDesktop
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
+                      children: [
+                        expRow(context, '~2', 'Years\nExperience',isDesktop),
+                        SizedBox(width: 15),
+                        expRow(
+                            context,
+                            '20+',
+                            'Projects Completed\nin Pakistan',isDesktop
+                        ),
+                        SizedBox(width: 15),
+                        expRow(context, '~130k', 'Content\nReach & Views',isDesktop),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
+              isDesktop? SizedBox(width: 100,):SizedBox.shrink(),
+              isDesktop? Expanded(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Full circular background
+                    Container(
+                      width: isDesktop?MediaQuery.of(context).size.width * 0.35: MediaQuery.of(context).size.width * 0.40,
+                      height: isDesktop?MediaQuery.of(context).size.width * 0.35:MediaQuery.of(context).size.width * 0.40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: backgroundDarkPrimary.withValues(alpha: 0.6),
+                      ),
+                    ),
 
-          /// RIGHT-SIDE IMAGE (FULL RIGHT)
-          if (isDesktop)
-            Positioned(
-              right: 0,
-              top: 0,
-              bottom: 0,
-              child: Image.asset(
-                'assets/image/profile.png',
-                fit: BoxFit.cover,
-                width: MediaQuery.of(context).size.width * 0.35,
-              ),
-            ),
-        ],
+                    // CircleAvatar image on top
+                    CircleAvatar(
+                      radius: isTablet? (MediaQuery.of(context).size.width * 0.45) / 2: (MediaQuery.of(context).size.width * 0.28) / 2,
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: AssetImage('assets/image/profile.png'),
+                    ),
+
+
+                  ],
+                ),
+              ):SizedBox(),
+
+
+            ],
+          ),
+        ),
       ),
     );
   }

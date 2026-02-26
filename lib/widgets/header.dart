@@ -29,7 +29,7 @@ class HeaderBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Bilal',
+            'Bilal Ahmad',
             style: TextStyle(
               color: textWhite,
               fontFamily: 'Agustina',
