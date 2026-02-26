@@ -29,7 +29,7 @@ class AboutSection extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
-              const SizedBox(height: 22),
+              const SizedBox(height: 30),
 
               Responsive(
                 mobile: _buildContent(context, false),
