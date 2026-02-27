@@ -124,8 +124,6 @@ class SkillsSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             skillContainer('assets/skills/github.svg', 'GitHub'),
-            SizedBox(width: 14),
-            skillContainer('assets/skills/dart.svg', 'Dart'),
           ],
         ),
 
