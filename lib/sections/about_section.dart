@@ -101,7 +101,7 @@ class AboutSection extends StatelessWidget {
         text(
           text:
               "I’m a passionate Flutter Developer focused on building clean, responsive, and user-centric applications. I specialize in developing cross-platform solutions using Flutter, creating seamless experiences across Android and iOS App's. I enjoy transforming ideas into intuitive, high-quality interfaces while ensuring performance, scalability, and maintainable architecture. My approach combines thoughtful UI design with solid engineering practices to deliver reliable and engaging products. I’m continuously learning, exploring new technologies, and improving my craft to stay aligned with modern development standards and build better digital experiences.",
-          textAlign: isDesktop ? TextAlign.justify : TextAlign.center,
+          textAlign: TextAlign.justify,
           fontSize: 14,
           height: 2,
           fontWeight: FontWeight.w400,

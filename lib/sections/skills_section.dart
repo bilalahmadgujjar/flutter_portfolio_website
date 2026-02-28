@@ -148,6 +148,7 @@ class SkillsSection extends StatelessWidget {
             child: SvgPicture.asset(
               'assets/image/stack.svg',
               fit: BoxFit.cover,
+              width: 250,
             ),
           ),
       ],
