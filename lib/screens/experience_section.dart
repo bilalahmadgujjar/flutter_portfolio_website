@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/core/app_colors.dart';
 
+import '../widgets/text_widget.dart';
+
 
 class ExperienceItem {
   final String role;
@@ -114,7 +116,7 @@ class ExperienceSection extends StatelessWidget {
             // if (!isLast)
             Container(
               width: 2,
-              height: 120,
+              height: 100,
               color: textDisabled,
             ),
           ],
@@ -158,10 +160,16 @@ class ExperienceSection extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                Text(
+                text(
+                  text:
                   item.description,
-                  style: theme.bodyLarge?.copyWith(fontSize: 12,height: 1.6,letterSpacing: 1),
+                  textAlign: TextAlign.justify,
+                  fontSize: 12,
+                  height: 2,
+                  fontWeight: FontWeight.w400,
+                  textColor: textWhite,
                 ),
+
               ],
             ),
           ),
