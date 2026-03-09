@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'core/theme.dart';
+import 'core/app_colors.dart';
 import 'portfolio_screen.dart';
 
 void main() {

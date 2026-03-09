@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/screens/about_section.dart';
+import 'package:portfolio_app/screens/contact_section.dart';
+import 'package:portfolio_app/screens/experience_section.dart';
+import 'package:portfolio_app/screens/home_section.dart';
+import 'package:portfolio_app/screens/projects_section.dart';
+import 'package:portfolio_app/screens/skills_section.dart';
 import 'widgets/header.dart';
 import 'widgets/mobile_drawer.dart';
-import 'sections/home_section.dart';
-import 'sections/about_section.dart';
-import 'sections/skills_section.dart';
-import 'sections/experience_section.dart';
-import 'sections/projects_section.dart';
-import 'sections/contact_section.dart';
+
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});

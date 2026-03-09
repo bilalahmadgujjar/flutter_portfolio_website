@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/core/theme.dart';
+import 'package:portfolio_app/core/app_colors.dart';
 import 'package:portfolio_app/widgets/text_widget.dart';
 import '../core/responsive.dart';
 

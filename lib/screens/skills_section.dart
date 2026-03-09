@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../core/responsive.dart';
-import '../core/theme.dart';
+import '../core/app_colors.dart';
 import '../widgets/text_widget.dart';
 
 class SkillsSection extends StatelessWidget {
