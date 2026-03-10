@@ -74,9 +74,9 @@ class HeaderBox extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     if (width > 1400) {
-      return 180; // Large screens
+      return 110; // Large screens
     } else if (width > 1100) {
-      return 100; // Laptops
+      return 80; // Laptops
     } else if (width > 800) {
       return 60; // Tablets / small screens
     } else {

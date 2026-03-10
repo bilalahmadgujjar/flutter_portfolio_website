@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_app/core/app_colors.dart';
 import '../core/responsive.dart';
+import '../widgets/text_widget.dart';
 
 class ProjectItem {
   final String title;
@@ -20,40 +22,42 @@ class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
 
   List<ProjectItem> get _projects => [
-        ProjectItem(
-          title: 'E-Commerce App',
-          description: 'A full-stack Flutter application with Firebase backend, Riverpod state management, and Stripe integration.',
-          tags: ['Flutter', 'Firebase', 'Stripe'],
-          link: '#',
-        ),
-        ProjectItem(
-          title: 'Task Management System',
-          description: 'Responsive web application built with Flutter web for teams to manage projects and track time.',
-          tags: ['Flutter Web', 'Appwrite', 'Provider'],
-          link: '#',
-        ),
-        ProjectItem(
-          title: 'Fitness Tracker',
-          description: 'Health and fitness monitoring app featuring custom charts, pedometer integration, and social sharing features.',
-          tags: ['Flutter', 'Health API', 'Charts'],
-          link: '#',
-        ),
-        ProjectItem(
-          title: 'Portfolio Website',
-          description: 'The very site you are looking at right now, built entirely with Flutter for web.',
-          tags: ['Flutter Web', 'Responsive Design'],
-          link: '#',
-        ),
-      ];
+    ProjectItem(
+      title: 'E-Commerce App',
+      description: 'A full-stack Flutter application with Firebase backend, Riverpod state management, and Stripe integration.',
+      tags: ['Flutter', 'Firebase', 'Stripe','Flutter Web', 'Appwrite', 'Provider','Flutter Web', 'Appwrite', 'Provider'],
+      link: '#',
+    ),
+    ProjectItem(
+      title: 'Task Management System',
+      description: 'Responsive web application built with Flutter web for teams to manage projects and track time.',
+      tags: ['Flutter Web', 'Appwrite', 'Provider'],
+      link: '#',
+    ),
+    ProjectItem(
+      title: 'Fitness Tracker',
+      description: 'Health and fitness monitoring app featuring custom charts, pedometer integration, and social sharing features.',
+      tags: ['Flutter', 'Health API', 'Charts'],
+      link: '#',
+    ),
+    ProjectItem(
+      title: 'Portfolio Website',
+      description: 'The very site you are looking at right now, built entirely with Flutter for web.',
+      tags: ['Flutter Web', 'Responsive Design'],
+      link: '#',
+    ),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     final isMobile = Responsive.isMobile(context);
+    final isTab = Responsive.isTablet(context);
 
-    // Desktop: 2 columns, Mobile: 1 column
-    final crossAxisCount = isMobile ? 1 : 2;
 
+
+    final crossAxisCount = isMobile ? 1 : isTab ? 2 : 3;
     return Container(
       width: double.infinity,
       color: backgroundDarkSecondary,
@@ -69,8 +73,21 @@ class ProjectsSection extends StatelessWidget {
                 style: theme.headlineLarge!.copyWith(
                   color: accentMint,
                   fontSize: 24,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
+
+              const SizedBox(height: 15),
+              text(
+                text:
+                'Stuff I loved working with',
+                textAlign:  TextAlign.center,
+                fontSize: 13,
+                fontWeight: FontWeight.w300,
+                textColor: textWhite,
+                overflow: TextOverflow.ellipsis,
+              ),
+
               const SizedBox(height: 40),
               GridView.builder(
                 shrinkWrap: true,
@@ -79,18 +96,18 @@ class ProjectsSection extends StatelessWidget {
                   crossAxisCount: crossAxisCount,
                   crossAxisSpacing: 32,
                   mainAxisSpacing: 32,
-                  childAspectRatio: isMobile ? 1.5 : 1.7,
+                  childAspectRatio: isMobile ? 1.18 : isTab ? 1.17 : 1.01,
                 ),
                 itemCount: _projects.length,
                 itemBuilder: (context, index) {
                   return _buildProjectCard(context, _projects[index]);
                 },
               ),
-              const SizedBox(height: 48),
-              OutlinedButton(
-                onPressed: () {},
-                child: const Text('View All Projects'),
-              ),
+              // const SizedBox(height: 48),
+              // OutlinedButton(
+              //   onPressed: () {},
+              //   child: const Text('View All Projects'),
+              // ),
             ],
           ),
         ),
@@ -98,64 +115,165 @@ class ProjectsSection extends StatelessWidget {
     );
   }
 
+
+
+
+
   Widget _buildProjectCard(BuildContext context, ProjectItem project) {
     final theme = Theme.of(context).textTheme;
+    final isMobile = Responsive.isMobile(context);
+    final isTab = Responsive.isTablet(context);
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black12),
+        color: backgroundDarkSecondary,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.black12),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black12,
+            color: Colors.black45,
             blurRadius: 10,
             offset: Offset(0, 4),
           ),
         ],
       ),
-      padding: const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(Icons.folder_open, size: 40, color: Colors.black),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.open_in_new),
-                color: Colors.black,
+
+          /// IMAGE
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(16),
+            ),
+            child: AspectRatio(
+              aspectRatio: isMobile?16 / 8:isTab? 16 / 8 :16 / 9,
+
+              child: Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP77I3VISSKS8X16c8dtDA1ynJ9xMPGHa1jg&s',
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          Text(
-            project.title,
-            style: theme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: Text(
-              project.description,
-              style: theme.bodyMedium?.copyWith(color: Colors.grey[700]),
             ),
           ),
-          const SizedBox(height: 16),
-          Wrap(
-            spacing: 8,
-            runSpacing: 4,
-            children: project.tags
-                .map((tag) => Text(
-                      tag,
-                      style: theme.bodyMedium?.copyWith(
-                        fontFamily: 'monospace',
-                        color: Colors.grey[600],
-                        fontSize: 14,
+
+          /// CONTENT
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 14,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  /// TITLE
+                  Text(
+                    project.title,
+                    style: theme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: isMobile ? 18 : 20,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  /// DESCRIPTION
+                  // text(
+                  //   text:
+                  //   project.description,
+                  //   textAlign: TextAlign.justify,
+                  //   fontSize: 12,
+                  //   maxLines: 2,
+                  //   overflow: TextOverflow.ellipsis,
+                  //   fontWeight: FontWeight.w400,
+                  //   textColor: textDisabled,
+                  // ),
+                  //
+                  // const Spacer(),
+
+                  /// TAGS
+
+                  SizedBox(
+                    height: 30,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: project.tags.length,
+                      separatorBuilder: (_, _) => const SizedBox(width: 6),
+                      itemBuilder: (context, index) {
+                        final tag = project.tags[index];
+
+                        return Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: backgroundDarkPrimary,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Center(
+                            child: text(
+                              text: tag,
+                              textColor: accentMint,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  const SizedBox(height: 14),
+
+                  /// STORE ICONS
+
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      _storeButton(
+                        icon: FontAwesomeIcons.apple,
+                        label: "App",
+                        iconSize: 15,
                       ),
-                    ))
-                .toList(),
+                      _storeButton(
+                        icon: FontAwesomeIcons.google,
+                        label: "Play",
+                        iconSize: 12,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
+        ],
+      ),
+    );
+  }
+
+
+  /// STORE BUTTON
+  Widget _storeButton({
+    required IconData icon,
+    required String label,
+    required double iconSize,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: backgroundDarkPrimary,
+        border: Border.all(color: Colors.black12),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: iconSize, color: accentMint),
+          const SizedBox(width: 6),
+          text(text: label, textColor: accentMint),
         ],
       ),
     );
