@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_app/core/app_colors.dart';
 import 'package:portfolio_app/core/app_strings.dart';
 import 'package:portfolio_app/widgets/text_widget.dart';
+import '../core/methods.dart';
 import '../core/responsive.dart';
 
 class HomeSection extends StatefulWidget {
@@ -145,13 +146,22 @@ class _HomeSectionState extends State<HomeSection> {
                               ? MainAxisAlignment.start
                               : MainAxisAlignment.center,
                           children: [
-                            iconContainer(context, FontAwesomeIcons.instagram, isDesktop),
+                            iconContainer(context, FontAwesomeIcons.instagram, isDesktop,()
+                            {
+                              openUrl(myPhone);
+                            }),
                             SizedBox(width: 12),
-                            iconContainer(context, FontAwesomeIcons.solidEnvelope, isDesktop),
+                            iconContainer(context, FontAwesomeIcons.solidEnvelope, isDesktop,(){
+                              openUrl(myEmail);
+                            }),
                             SizedBox(width: 12),
-                            iconContainer(context, FontAwesomeIcons.github, isDesktop),
+                            iconContainer(context, FontAwesomeIcons.github, isDesktop,(){
+                              openUrl(myGithub);
+                            }),
                             SizedBox(width: 12),
-                            iconContainer(context, FontAwesomeIcons.linkedin, isDesktop),
+                            iconContainer(context, FontAwesomeIcons.linkedin, isDesktop,(){
+                              openUrl(myLinkedIn);
+                            }),
                           ],
                         ),
                       ],
@@ -245,15 +255,18 @@ class _HomeSectionState extends State<HomeSection> {
     );
   }
 
-  Container iconContainer(BuildContext context, IconData icon, bool isDesktop) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: backgroundDarkPrimary,
-        shape: BoxShape.circle,
-      ),
-      child: Center(
-        child: FaIcon(icon, color: accentMint, size: isDesktop ? 18 : 16),
+  Widget iconContainer(BuildContext context, IconData icon, bool isDesktop,VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: backgroundDarkPrimary,
+          shape: BoxShape.circle,
+        ),
+        child: Center(
+          child: FaIcon(icon, color: accentMint, size: isDesktop ? 18 : 16),
+        ),
       ),
     );
   }

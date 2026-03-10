@@ -37,22 +37,7 @@ class MobileDrawer extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 48),
-          // ...options.map((option) {
-          //   return ListTile(
-          //     contentPadding: EdgeInsets.zero,
-          //     title: text(text: option.title,
-          //       textColor: textWhite,
-          //       fontWeight: FontWeight.w500,
-          //       fontSize: 16,
-          //     ),
-          //     onTap: () {
-          //       Navigator.of(context).pop();
-          //       onNavTap(option.key);
-          //     },
-          //   );
-          // }).toList(),
-
+          const SizedBox(height: 40),
           ...options.map((option) {
             return ListTile(
               contentPadding: EdgeInsets.zero,
