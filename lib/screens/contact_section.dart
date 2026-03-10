@@ -67,57 +67,92 @@ class ContactSection extends StatelessWidget {
                 textColor: textWhite,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 40),
-
-
+              const SizedBox(height: 50),
 
               // Main Flex: Adjust order for mobile
               Flex(
                 direction: isDesktop ? Axis.horizontal : Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment:
-                isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                crossAxisAlignment: isDesktop
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
                 children: [
                   // Left Column: Date + Book Button
                   Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment:
-                    isDesktop ? CrossAxisAlignment.center : CrossAxisAlignment.center,
+                    crossAxisAlignment: isDesktop
+                        ? CrossAxisAlignment.center
+                        : CrossAxisAlignment.center,
                     children: [
-                      // Date Box
+                      // Date Box - Refined UI
                       Container(
-                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: backgroundDarkSecondary,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.3),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            text(
-                              text: monthName.toUpperCase(),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              textColor: accentMint,
+                            // Month Header
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                color: accentMint,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(12),
+                                  topRight: Radius.circular(12),
+                                ),
+                              ),
+                              child: Center(
+                                child: text(
+                                  text: monthName.toUpperCase(),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  textColor: backgroundDarkPrimary,
+                                ),
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            text(
-                              text: dayNumber.toString(),
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              textColor: textWhite,
-                            ),
-                            const SizedBox(height: 4),
-                            text(
-                              text: weekdayName,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300,
-                              textColor: textDisabled,
+
+                            const SizedBox(height: 16),
+
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 20,
+                              ),
+                              child: Column(
+                                children: [
+                                  // Day Number
+                                  text(
+                                    text: dayNumber.toString(),
+                                    fontSize: 48,
+                                    fontWeight: FontWeight.bold,
+                                    textColor: textWhite,
+                                  ),
+
+                                  const SizedBox(height: 8),
+
+                                  // Weekday
+                                  text(
+                                    text: weekdayName,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    textColor: textWhite.withValues(alpha: 0.7),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-
                       const SizedBox(height: 20),
 
                       // Book Session Button (Always under date, centered)
@@ -147,7 +182,10 @@ class ContactSection extends StatelessWidget {
                   ),
 
                   // Spacer between left and right column on desktop
-                  if (isDesktop) const SizedBox(width: 50) else const SizedBox(height: 40),
+                  if (isDesktop)
+                    const SizedBox(width: 50)
+                  else
+                    const SizedBox(height: 40),
 
                   // Right Column: Contact Info + Socials
                   Column(
@@ -180,28 +218,28 @@ class ContactSection extends StatelessWidget {
                             context,
                             FontAwesomeIcons.instagram,
                             isDesktop,
-                                () => openUrl(myInstagram),
+                            () => openUrl(myInstagram),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.github,
                             isDesktop,
-                                () => openUrl(myGithub),
+                            () => openUrl(myGithub),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.linkedin,
                             isDesktop,
-                                () => openUrl(myLinkedIn),
+                            () => openUrl(myLinkedIn),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.solidEnvelope,
                             isDesktop,
-                                () => openUrl(myEmail),
+                            () => openUrl(myEmail),
                           ),
                         ],
                       ),
