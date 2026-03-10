@@ -84,16 +84,18 @@ class ContactSection extends StatelessWidget {
                         ? CrossAxisAlignment.center
                         : CrossAxisAlignment.center,
                     children: [
-                      // Date Box - Refined UI
+
+                      // Date Box - Compact UI
                       Container(
+                        width: 240, // smaller width
                         decoration: BoxDecoration(
                           color: backgroundDarkSecondary,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withValues(alpha: 0.3),
-                              blurRadius: 8,
-                              offset: const Offset(0, 4),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -103,7 +105,7 @@ class ContactSection extends StatelessWidget {
                             // Month Header
                             Container(
                               width: double.infinity,
-                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              padding: const EdgeInsets.symmetric(vertical: 12), // smaller vertical padding
                               decoration: BoxDecoration(
                                 color: accentMint,
                                 borderRadius: const BorderRadius.only(
@@ -114,36 +116,36 @@ class ContactSection extends StatelessWidget {
                               child: Center(
                                 child: text(
                                   text: monthName.toUpperCase(),
-                                  fontSize: 20,
+                                  fontSize: 20, // smaller font
                                   fontWeight: FontWeight.bold,
                                   textColor: backgroundDarkPrimary,
                                 ),
                               ),
                             ),
 
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 8), // smaller spacing
 
+                            // Day and Weekday
                             Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 40,
-                                vertical: 20,
+                                horizontal: 8,
+                                vertical: 16,
                               ),
                               child: Column(
                                 children: [
                                   // Day Number
                                   text(
                                     text: dayNumber.toString(),
-                                    fontSize: 48,
+                                    fontSize: 35, // smaller font
                                     fontWeight: FontWeight.bold,
                                     textColor: textWhite,
+
                                   ),
-
-                                  const SizedBox(height: 8),
-
+                                  const SizedBox(height: 12),
                                   // Weekday
                                   text(
                                     text: weekdayName,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w400,
                                     textColor: textWhite.withValues(alpha: 0.7),
                                   ),
@@ -161,7 +163,7 @@ class ContactSection extends StatelessWidget {
                           backgroundColor: accentMint,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
-                            vertical: 14,
+                            vertical: 20,
                           ),
                         ),
                         onPressed: () {},
@@ -183,7 +185,7 @@ class ContactSection extends StatelessWidget {
 
                   // Spacer between left and right column on desktop
                   if (isDesktop)
-                    const SizedBox(width: 50)
+                    const SizedBox(width: 70)
                   else
                     const SizedBox(height: 40),
 
