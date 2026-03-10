@@ -110,7 +110,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   controller: _scrollController,
                   child: Column(
                     children: [
-                      Container(key: homeKey, child: const HomeSection()),
+                      Container(key: homeKey, child:  HomeSection()),
                       Container(key: aboutKey, child: const AboutSection()),
                       Container(key: skillsKey, child: const SkillsSection()),
                       Container(key: experienceKey, child: const ExperienceSection()),
