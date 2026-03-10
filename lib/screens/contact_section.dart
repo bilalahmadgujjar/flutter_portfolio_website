@@ -14,7 +14,6 @@ class ContactSection extends StatelessWidget {
     final isDesktop = Responsive.isDesktop(context);
     final now = DateTime.now();
 
-    // Month and weekday names
     final months = [
       "January",
       "February",
@@ -46,10 +45,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: backgroundDarkPrimary,
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 120 : 24,
-        vertical: 60,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 50),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),
@@ -73,68 +69,87 @@ class ContactSection extends StatelessWidget {
               ),
               const SizedBox(height: 40),
 
-              // Main Row: Left = Date & Button, Right = Contact Info
+
+
+              // Main Flex: Adjust order for mobile
               Flex(
                 direction: isDesktop ? Axis.horizontal : Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment:
+                isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
-                  // Left Column: Date & Book Session
-
-                  Container(
-                    margin: EdgeInsets.only(
-                      right: isDesktop ? 60 : 0,
-                      bottom: isDesktop ? 0 : 40,
-                    ),
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: backgroundDarkSecondary,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        text(
-                          text: monthName.toUpperCase(),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          textColor: accentMint,
+                  // Left Column: Date + Book Button
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment:
+                    isDesktop ? CrossAxisAlignment.center : CrossAxisAlignment.center,
+                    children: [
+                      // Date Box
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: backgroundDarkSecondary,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        const SizedBox(height: 8),
-                        text(
-                          text: dayNumber.toString(),
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          textColor: textWhite,
-                        ),
-                        const SizedBox(height: 4),
-                        text(
-                          text: weekdayName,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          textColor: textDisabled,
-                        ),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: accentMint,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 32,
-                              vertical: 14,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            text(
+                              text: monthName.toUpperCase(),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              textColor: accentMint,
                             ),
-                            textStyle: const TextStyle(
-                              fontSize: 14,
+                            const SizedBox(height: 8),
+                            text(
+                              text: dayNumber.toString(),
+                              fontSize: 32,
                               fontWeight: FontWeight.bold,
+                              textColor: textWhite,
                             ),
-                          ),
-                          child: const Text("Book a 45-min Session"),
+                            const SizedBox(height: 4),
+                            text(
+                              text: weekdayName,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              textColor: textDisabled,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Book Session Button (Always under date, centered)
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: accentMint,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 14,
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.video_camera_back, size: 20),
+                            const SizedBox(width: 10),
+                            text(
+                              text: 'Book a 45 mins session',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
 
-                  // Right Column: Email, Phone, Divider, Social Icons
+                  // Spacer between left and right column on desktop
+                  if (isDesktop) const SizedBox(width: 50) else const SizedBox(height: 40),
+
+                  // Right Column: Contact Info + Socials
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -165,28 +180,28 @@ class ContactSection extends StatelessWidget {
                             context,
                             FontAwesomeIcons.instagram,
                             isDesktop,
-                            () => openUrl(myInstagram),
+                                () => openUrl(myInstagram),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.github,
                             isDesktop,
-                            () => openUrl(myGithub),
+                                () => openUrl(myGithub),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.linkedin,
                             isDesktop,
-                            () => openUrl(myLinkedIn),
+                                () => openUrl(myLinkedIn),
                           ),
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
                             FontAwesomeIcons.solidEnvelope,
                             isDesktop,
-                            () => openUrl(myEmail),
+                                () => openUrl(myEmail),
                           ),
                         ],
                       ),
@@ -198,12 +213,26 @@ class ContactSection extends StatelessWidget {
               const SizedBox(height: 60),
 
               // Footer
-              text(
-                text: "Designed & Built in Flutter",
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                textColor: textDisabled,
-                textAlign: TextAlign.center,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  text(
+                    text: "Designed & Built in Flutter by",
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    textColor: textWhite,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(width: 10),
+                  text(
+                    text: "Muhammad Bilal Ahmad",
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    textColor: accentMint,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ],
           ),
@@ -214,7 +243,6 @@ class ContactSection extends StatelessWidget {
 
   ///==================== Reusable Widgets ======================
 
-  // Social icon
   Widget iconContainer(
     BuildContext context,
     IconData icon,
@@ -236,7 +264,6 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  // Contact info (phone/email) container
   Widget contactInfoContainer({
     required BuildContext context,
     required IconData leadingIcon,
