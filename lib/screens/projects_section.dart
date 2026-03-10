@@ -57,25 +57,21 @@ class ProjectsSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: backgroundDarkSecondary,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 100),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 50),
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1000),
+          constraints: const BoxConstraints(maxWidth: 1200),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'SELECTED WORK',
-                style: theme.headlineLarge,
-                textAlign: TextAlign.center,
+                'PROJECTS',
+                style: theme.headlineLarge!.copyWith(
+                  color: accentMint,
+                  fontSize: 24,
+                ),
               ),
-              const SizedBox(height: 16),
-              Container(
-                width: 60,
-                height: 4,
-                color: Colors.black,
-              ),
-              const SizedBox(height: 64),
+              const SizedBox(height: 40),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -83,7 +79,7 @@ class ProjectsSection extends StatelessWidget {
                   crossAxisCount: crossAxisCount,
                   crossAxisSpacing: 32,
                   mainAxisSpacing: 32,
-                  childAspectRatio: isMobile ? 1.2 : 1.5,
+                  childAspectRatio: isMobile ? 1.5 : 1.7,
                 ),
                 itemCount: _projects.length,
                 itemBuilder: (context, index) {
