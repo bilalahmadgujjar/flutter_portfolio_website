@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/core/app_colors.dart';
 
+import '../core/app_strings.dart';
 import '../widgets/text_widget.dart';
 
 
@@ -21,30 +22,6 @@ class ExperienceItem {
 class ExperienceSection extends StatelessWidget {
   const ExperienceSection({super.key});
 
-
-  List<ExperienceItem> get mockExperiences => [
-    ExperienceItem(
-      role: 'Mobile Application Developer',
-      company: "Search O' Pal",
-      duration: 'Nov 2024 - Present',
-      description:
-      'Developing and maintaining scalable cross-platform mobile applications using Flutter. Collaborating with backend teams to integrate APIs, implementing clean architecture, optimizing performance, and contributing to feature planning and UI/UX improvements.',
-    ),
-    ExperienceItem(
-      role: 'Flutter Developer Intern',
-      company: 'Simcoe IT',
-      duration: 'July 2024 - Oct 2024',
-      description:
-      'Built and maintained cross-platform mobile applications using Flutter. Implemented responsive UI designs, integrated REST APIs, fixed bugs, and improved application performance while collaborating with senior developers in an agile environment.',
-    ),
-    ExperienceItem(
-      role: 'Flutter Developer Intern',
-      company: 'Hits',
-      duration: 'July 2023 - Sep 2023',
-      description:
-      'Worked on frontend development and gained experience in building responsive interfaces. Assisted in developing mobile features using Flutter, learning best practices in UI development, code structure, and debugging techniques.',
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {

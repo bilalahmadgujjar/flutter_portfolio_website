@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_app/core/app_colors.dart';
+import '../core/app_strings.dart';
 import '../core/responsive.dart';
 import '../widgets/text_widget.dart';
 
@@ -21,33 +22,7 @@ class ProjectItem {
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
 
-  List<ProjectItem> get _projects => [
-    ProjectItem(
-      title: 'E-Commerce App',
-      description: 'A full-stack Flutter application with Firebase backend, Riverpod state management, and Stripe integration.',
-      tags: ['Flutter', 'Firebase', 'Stripe','Flutter Web', 'Appwrite', 'Provider','Flutter Web', 'Appwrite', 'Provider'],
-      link: '#',
-    ),
-    ProjectItem(
-      title: 'Task Management System',
-      description: 'Responsive web application built with Flutter web for teams to manage projects and track time.',
-      tags: ['Flutter Web', 'Appwrite', 'Provider'],
-      link: '#',
-    ),
-    ProjectItem(
-      title: 'Fitness Tracker',
-      description: 'Health and fitness monitoring app featuring custom charts, pedometer integration, and social sharing features.',
-      tags: ['Flutter', 'Health API', 'Charts'],
-      link: '#',
-    ),
-    ProjectItem(
-      title: 'Portfolio Website',
-      description: 'The very site you are looking at right now, built entirely with Flutter for web.',
-      tags: ['Flutter Web', 'Responsive Design'],
-      link: '#',
-    ),
 
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +73,9 @@ class ProjectsSection extends StatelessWidget {
                   mainAxisSpacing: 32,
                   childAspectRatio: isMobile ? 1.18 : isTab ? 1.17 : 1.01,
                 ),
-                itemCount: _projects.length,
+                itemCount: projects.length,
                 itemBuilder: (context, index) {
-                  return _buildProjectCard(context, _projects[index]);
+                  return _buildProjectCard(context, projects[index]);
                 },
               ),
               // const SizedBox(height: 48),
@@ -117,7 +92,9 @@ class ProjectsSection extends StatelessWidget {
 
 
 
-
+  ///===============================================================
+  ///=========================== Widgets ===========================
+  ///===============================================================
 
   Widget _buildProjectCard(BuildContext context, ProjectItem project) {
     final theme = Theme.of(context).textTheme;
@@ -278,4 +255,9 @@ class ProjectsSection extends StatelessWidget {
       ),
     );
   }
+
+
+
+
+
 }
