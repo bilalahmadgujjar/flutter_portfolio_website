@@ -18,6 +18,7 @@ class PortfolioScreen extends StatefulWidget {
 
 class _PortfolioScreenState extends State<PortfolioScreen> {
   final ScrollController _scrollController = ScrollController();
+  GlobalKey? selectedKey;
 
   final homeKey = GlobalKey();
   final aboutKey = GlobalKey();
@@ -31,6 +32,9 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   @override
   void initState() {
     super.initState();
+    _scrollController.addListener(() {
+      updateSelectedSection();
+    });
     navOptions = [
       HeaderOption(title: 'Home', key: homeKey),
       HeaderOption(title: 'About', key: aboutKey),
@@ -47,7 +51,33 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     super.dispose();
   }
 
+
+  void updateSelectedSection() {
+    for (var option in navOptions) {
+      final context = option.key.currentContext;
+
+      if (context != null) {
+        final box = context.findRenderObject() as RenderBox;
+        final position = box.localToGlobal(Offset.zero).dy;
+
+        if (position >= 0 && position <= 300) {
+          if (selectedKey != option.key) {
+            setState(() {
+              selectedKey = option.key;
+            });
+          }
+          break;
+        }
+      }
+    }
+  }
+
+
   void scrollToSection(GlobalKey key) {
+    setState(() {
+      selectedKey = key;
+    });
+
     if (key.currentContext != null) {
       Scrollable.ensureVisible(
         key.currentContext!,
@@ -56,6 +86,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +102,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               HeaderBox(
                 options: navOptions,
                 onNavTap: scrollToSection,
+                selectedKey: selectedKey,
               ),
               Expanded(
                 child: SingleChildScrollView(

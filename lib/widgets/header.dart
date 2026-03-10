@@ -12,8 +12,14 @@ class HeaderOption {
 class HeaderBox extends StatelessWidget {
   final List<HeaderOption> options;
   final Function(GlobalKey) onNavTap;
+  final GlobalKey? selectedKey;
 
-  const HeaderBox({super.key, required this.options, required this.onNavTap});
+  const HeaderBox({
+    super.key,
+    required this.options,
+    required this.onNavTap,
+    required this.selectedKey,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +29,8 @@ class HeaderBox extends StatelessWidget {
       color: backgroundDarkSecondary,
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding(context),
-        vertical: 16,
-      ),
+        vertical: 26,
+      ).copyWith(bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,6 +48,8 @@ class HeaderBox extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: options.map((option) {
+                final isSelected = option.key == selectedKey;
+
                 return Padding(
                   padding: const EdgeInsets.only(left: 32),
                   child: InkWell(
@@ -49,7 +57,7 @@ class HeaderBox extends StatelessWidget {
                     child: Text(
                       option.title,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: textDisabled,
+                        color: isSelected ? accentMint : textDisabled,
                         fontWeight: FontWeight.w600,
                         fontSize: 15.5,
                       ),
@@ -60,7 +68,7 @@ class HeaderBox extends StatelessWidget {
             )
           else
             IconButton(
-              icon:  Icon(Icons.menu,color: accentMint, size: 24),
+              icon: Icon(Icons.menu, color: accentMint, size: 24),
               onPressed: () {
                 Scaffold.of(context).openEndDrawer();
               },

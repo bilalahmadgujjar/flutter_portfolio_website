@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_app/core/app_colors.dart';
+import 'package:portfolio_app/core/app_strings.dart';
 import 'package:portfolio_app/widgets/text_widget.dart';
 import '../core/responsive.dart';
 
@@ -80,7 +81,7 @@ class _HomeSectionState extends State<HomeSection> {
                     ),
                     SizedBox(height: 16),
                     text(
-                      text: 'Muhammad',
+                      text:firstName,
                       letterSpace: 5,
                       fontWeight: FontWeight.w100,
                       textColor: textWhite,
@@ -91,7 +92,7 @@ class _HomeSectionState extends State<HomeSection> {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      "Bilal Ahmad",
+                     lastName,
                       style: isDesktop
                           ? theme.displayLarge!.copyWith(fontSize: 50)
                           : theme.displayMedium!.copyWith(fontSize: 30),
