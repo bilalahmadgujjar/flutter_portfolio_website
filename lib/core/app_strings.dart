@@ -1,9 +1,6 @@
 
-
 import '../screens/experience_section.dart';
 import '../screens/projects_section.dart';
-
-
 
 
 
@@ -47,6 +44,7 @@ List<ExperienceItem> get mockExperiences => [
 ///=======================================================================
 ///=========================== Project Section ===========================
 ///=======================================================================
+
 
 List<ProjectItem> get projects => [
   ProjectItem(

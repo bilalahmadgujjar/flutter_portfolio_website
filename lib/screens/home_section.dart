@@ -176,10 +176,10 @@ class _HomeSectionState extends State<HomeSection> {
                         expRow(
                             context,
                             '20+',
-                            'Projects Completed\nin Pakistan',isDesktop
+                            'Projects Completed\nin 3+ Countries',isDesktop
                         ),
                         SizedBox(width: 15),
-                        expRow(context, '~130k', 'Content\nReach & Views',isDesktop),
+                        expRow(context, '~60k', 'Content\nReach & Views',isDesktop),
                       ],
                     ),
                   ],
