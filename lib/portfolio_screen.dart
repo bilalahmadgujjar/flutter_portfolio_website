@@ -95,6 +95,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         endDrawer: MobileDrawer(
           options: navOptions,
           onNavTap: scrollToSection,
+          selectedKey: selectedKey,
         ),
         body: SafeArea(
           child: Column(
