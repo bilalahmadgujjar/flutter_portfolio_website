@@ -197,6 +197,12 @@ class ProjectsSection extends StatelessWidget {
                       label: "Play",
                       iconSize: 12,
                     ),
+                    const SizedBox(width: 10),
+                    _storeButton(
+                      icon: FontAwesomeIcons.github,
+                      label: "Github",
+                      iconSize: 12,
+                    ),
                   ],
                 ),
               ],
