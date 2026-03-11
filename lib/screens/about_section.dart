@@ -30,7 +30,7 @@ class AboutSection extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
-              const SizedBox(height: 30),
+              isDesktop?const SizedBox(height: 30):SizedBox.shrink(),
 
               Responsive(
                 mobile: _buildContent(context, false),

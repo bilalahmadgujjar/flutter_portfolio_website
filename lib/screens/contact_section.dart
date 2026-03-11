@@ -225,6 +225,13 @@ class ContactSection extends StatelessWidget {
                           const SizedBox(width: 16),
                           iconContainer(
                             context,
+                            FontAwesomeIcons.whatsapp,
+                            isDesktop,
+                                () => openUrl(myWhatsapp),
+                          ),
+                          const SizedBox(width: 16),
+                          iconContainer(
+                            context,
                             FontAwesomeIcons.github,
                             isDesktop,
                             () => openUrl(myGithub),
@@ -253,8 +260,8 @@ class ContactSection extends StatelessWidget {
               const SizedBox(height: 60),
 
               // Footer
-              Row(
-                mainAxisSize: MainAxisSize.min,
+             isDesktop
+                  ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   text(
@@ -269,6 +276,26 @@ class ContactSection extends StatelessWidget {
                     text: "Muhammad Bilal Ahmad",
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
+                    textColor: accentMint,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              )
+                  : Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  text(
+                    text: "Designed & Built in Flutter by",
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    textColor: textWhite,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 6),
+                  text(
+                    text: "Muhammad Bilal Ahmad",
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
                     textColor: accentMint,
                     textAlign: TextAlign.center,
                   ),

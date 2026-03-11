@@ -139,6 +139,15 @@ class HomeSection extends StatelessWidget {
                             SizedBox(width: 12),
                             iconContainer(
                               context,
+                              FontAwesomeIcons.whatsapp,
+                              isDesktop,
+                                  () {
+                                openUrl(myWhatsapp);
+                              },
+                            ),
+                            SizedBox(width: 12),
+                            iconContainer(
+                              context,
                               FontAwesomeIcons.solidEnvelope,
                               isDesktop,
                               () {
