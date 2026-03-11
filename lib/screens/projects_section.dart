@@ -146,7 +146,7 @@ class ProjectsSection extends StatelessWidget {
                   text: project.description,
                   textAlign: TextAlign.justify,
                   fontSize: 13,
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.w400,
                   textColor: textDisabled,
