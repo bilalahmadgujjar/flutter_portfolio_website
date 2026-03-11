@@ -28,6 +28,7 @@ class ProjectsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     final isMobile = Responsive.isMobile(context);
+    final isSmallMobile = Responsive.isSmallMobile(context);
     final isTab = Responsive.isTablet(context);
 
 
@@ -71,7 +72,7 @@ class ProjectsSection extends StatelessWidget {
                   crossAxisCount: crossAxisCount,
                   crossAxisSpacing: 32,
                   mainAxisSpacing: 32,
-                  childAspectRatio: isMobile ? 1.18 : isTab ? 1.17 : 1.01,
+                  childAspectRatio: isSmallMobile ? 1.05 :isMobile ? 1.18 : isTab ? 1.17 : 1.01,
                 ),
                 itemCount: projects.length,
                 itemBuilder: (context, index) {
