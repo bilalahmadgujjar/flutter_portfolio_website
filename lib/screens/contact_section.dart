@@ -319,7 +319,7 @@ class ContactSection extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(isDesktop ? 16 : 12),
+        padding: EdgeInsets.all(isDesktop ? 14 : 12),
         decoration: BoxDecoration(
           color: backgroundDarkSecondary,
           shape: BoxShape.circle,

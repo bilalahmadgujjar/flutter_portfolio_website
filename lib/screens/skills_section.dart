@@ -97,7 +97,7 @@ class SkillsSection extends StatelessWidget {
           children: [
             skillContainer('assets/skills/api.svg', 'REST APIs'),
             SizedBox(width: 14),
-            skillContainer('assets/skills/dart.svg', 'Dart'),
+            skillContainer('assets/skills/django.svg', 'Django'),
           ],
         ),
 
@@ -166,7 +166,7 @@ class SkillsSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(svgPath, height: 22),
+          SvgPicture.asset(svgPath, height: 22,colorFilter:ColorFilter.mode(backgroundDarkPrimary, BlendMode.srcIn),),
           const SizedBox(width: 8),
           text(
             text: title,
