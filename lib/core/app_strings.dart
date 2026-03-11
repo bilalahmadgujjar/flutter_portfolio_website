@@ -58,6 +58,7 @@ List<ExperienceItem> get mockExperiences => [
 List<ProjectItem> get projects => [
   ProjectItem(
     title: 'E-Commerce App',
+    image: 'https://media.licdn.com/dms/image/v2/D4D12AQHAzpZZDBIkfA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710486640359?e=2147483647&v=beta&t=9iRUJ8yBIVaBKctslR9DBFXaD7R21PBHugsefN3ZcoM',
     description:
         'A full-stack Flutter application with Firebase backend, Riverpod state management, and Stripe integration.',
     tags: [
@@ -75,6 +76,7 @@ List<ProjectItem> get projects => [
   ),
   ProjectItem(
     title: 'Task Management System',
+    image: 'https://media.licdn.com/dms/image/v2/D4D12AQHAzpZZDBIkfA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710486640359?e=2147483647&v=beta&t=9iRUJ8yBIVaBKctslR9DBFXaD7R21PBHugsefN3ZcoM',
     description:
         'Responsive web application built with Flutter web for teams to manage projects and track time.',
     tags: ['Flutter Web', 'Appwrite', 'Provider'],
@@ -82,6 +84,7 @@ List<ProjectItem> get projects => [
   ),
   ProjectItem(
     title: 'Fitness Tracker',
+    image: 'https://media.licdn.com/dms/image/v2/D4D12AQHAzpZZDBIkfA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710486640359?e=2147483647&v=beta&t=9iRUJ8yBIVaBKctslR9DBFXaD7R21PBHugsefN3ZcoM',
     description:
         'Health and fitness monitoring app featuring custom charts, pedometer integration, and social sharing features.',
     tags: ['Flutter', 'Health API', 'Charts'],
@@ -89,6 +92,7 @@ List<ProjectItem> get projects => [
   ),
   ProjectItem(
     title: 'Portfolio Website',
+    image: 'https://media.licdn.com/dms/image/v2/D4D12AQHAzpZZDBIkfA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710486640359?e=2147483647&v=beta&t=9iRUJ8yBIVaBKctslR9DBFXaD7R21PBHugsefN3ZcoM',
     description:
         'The very site you are looking at right now, built entirely with Flutter for web.',
     tags: ['Flutter Web', 'Responsive Design'],

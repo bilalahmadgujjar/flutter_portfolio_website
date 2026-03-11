@@ -8,12 +8,14 @@ import '../widgets/text_widget.dart';
 class ProjectItem {
   final String title;
   final String description;
+  final String image;
   final List<String> tags;
   final String link;
 
   ProjectItem({
     required this.title,
     required this.description,
+    required this.image,
     required this.tags,
     required this.link,
   });
@@ -117,7 +119,7 @@ class ProjectsSection extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: isMobile ? 16 / 9 : 16 / 9,
               child: Image.network(
-                'https://media.licdn.com/dms/image/v2/D4D12AQHAzpZZDBIkfA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710486640359?e=2147483647&v=beta&t=9iRUJ8yBIVaBKctslR9DBFXaD7R21PBHugsefN3ZcoM',
+                project.image,
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),
