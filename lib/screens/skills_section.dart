@@ -15,6 +15,11 @@ class SkillsSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
+      constraints: BoxConstraints(
+        minHeight:
+        MediaQuery.of(context).size.height -
+            80, // rough height minus header
+      ),
       color: backgroundDarkSecondary,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 50),
       child: Center(
