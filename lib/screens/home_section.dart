@@ -133,7 +133,7 @@ class HomeSection extends StatelessWidget {
                               FontAwesomeIcons.instagram,
                               isDesktop,
                               () {
-                                openUrl(myPhone);
+                                openUrl(myInstagram);
                               },
                             ),
                             SizedBox(width: 12),
